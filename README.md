@@ -38,7 +38,7 @@ subapp = Syro.new {
   }
 }
 
-MyApp.register('path', subapp)
+MyApp.register('subapp', subapp)
 ```
 
 Access your subapp from the main app:
