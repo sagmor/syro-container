@@ -1,10 +1,8 @@
 # Syro::Container
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/syro/container`. To experiment with that code, run `bin/console` for an interactive prompt.
+A Syro Deck extension that allows it to register and resolve routes from a container.
 
-TODO: Delete this and the text above, and describe your gem
-
-## Installation
+## Usage
 
 Add this line to your application's Gemfile:
 
@@ -12,27 +10,46 @@ Add this line to your application's Gemfile:
 gem 'syro-container'
 ```
 
-And then execute:
+Include it in your `Syro::Deck`
 
-    $ bundle
+```ruby
+require 'syro/container'
 
-Or install it yourself as:
+class MyApp < Syro::Deck
+  include Syro::Container
+end
+```
 
-    $ gem install syro-container
+Register your sub-apps in your container:
 
-## Usage
+```ruby
+subapp = Syro.new {
+  # Your app code here
+  on('innerpath') {
+    get {
+      res.write "Hello, world!"
+    }
+  }
+}
 
-TODO: Write usage instructions here
+MyApp.register('path', subapp)
+```
 
-## Development
+Access your subapp from the main app:
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+```ruby
+app = Syro.new(MyApp)
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+env = {
+  "REQUEST_METHOD" => "GET",
+  "PATH_INFO"      => "/subapp/innerpath"
+}
+p app.call(env)
+```
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/syro-container. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/sagmor/syro-container. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 
 ## License
