@@ -4,7 +4,7 @@
 [![Build Status](https://travis-ci.org/sagmor/syro-container.svg)](https://travis-ci.org/sagmor/syro-container)
 [![Test Coverage](https://codeclimate.com/github/sagmor/syro-container/badges/coverage.svg)](https://codeclimate.com/github/sagmor/syro-container/coverage)
 [![Code Climate](https://codeclimate.com/github/sagmor/syro-container/badges/gpa.svg)](https://codeclimate.com/github/sagmor/syro-container)
-[![Inline docs](http://inch-ci.org/github/sagmor/mruby-cli.svg?branch=master)](http://inch-ci.org/github/sagmor/mruby-cli)
+[![Inline docs](http://inch-ci.org/github/sagmor/syro-container.svg?branch=master)](http://inch-ci.org/github/sagmor/syro-container)
 
 A Syro Deck extension that allows it to register and resolve routes from a container.
 
