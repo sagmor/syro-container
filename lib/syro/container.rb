@@ -19,6 +19,9 @@ class Syro
     end
 
     def resolve!
+      return if @resolved
+      @resolved = true
+
       segment = self.path.curr.split('/')[1]
       app = self.class.container.resolve(segment)
       self.path.consume(segment)
