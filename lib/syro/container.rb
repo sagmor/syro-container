@@ -3,7 +3,7 @@ require 'dry/container'
 
 require "syro/container/version"
 
-class Syro
+class Syro # :nodoc:
 
   # Container module for `Syro::Deck`
   #
@@ -22,6 +22,8 @@ class Syro
 
     # Overrides default `Syro::Deck` initialization to always fetch sub apps
     # from container
+    #
+    # @param before [#call] app routing block
     #
     def initialize(before)
       code = Proc.new do
