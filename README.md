@@ -51,6 +51,7 @@ env = {
   "PATH_INFO"      => "/subapp/innerpath"
 }
 p app.call(env)
+#=> [200, {"Content-Length"=>"13", "Content-Type"=>"text/html"}, ["Hello, world!"]]
 ```
 
 ## Contributing
